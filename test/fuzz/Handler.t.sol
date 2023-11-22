@@ -15,6 +15,9 @@ contract Handler is Test {
 
     uint256 MAX_DEPOSIT_SIZE = type(uint96).max;
 
+    uint256 public timesMintIsCalled;
+    address[] public userWithCollateralDeposited;
+
     constructor(DecentralizedStableCoin _dsc, DSCEngine _dsce) {
         dsc = _dsc;
         dsce = _dsce;
@@ -32,6 +35,41 @@ contract Handler is Test {
         collateral.mint(msg.sender, amountCollateral);
         collateral.approve(address(dsce), amountCollateral);
         dsce.depositCollateral(address(collateral), amountCollateral);
+        userWithCollateralDeposited.push(msg.sender);
+        vm.stopPrank();
+    }
+
+    function mint(uint256 amount, uint256 addressSeed) public {
+        if (userWithCollateralDeposited.length == 0) {
+            return;
+        }
+        address sender = userWithCollateralDeposited[addressSeed % userWithCollateralDeposited.length];
+        (uint256 totalDscMinted, uint256 collateralValueInUsd) = dsce.getAccountInformation(sender);
+
+        int256 maxDscToMint = (int256(collateralValueInUsd) / 2) - int256(totalDscMinted);
+        if (maxDscToMint < 0) {
+            return;
+        }
+        amount = bound(amount, 0, uint256(maxDscToMint));
+        if (amount == 0) {
+            return;
+        }
+        vm.startPrank(sender);
+        dsce.mintDsc(amount);
+        vm.stopPrank();
+        timesMintIsCalled++;
+    }
+
+    function redeemCollateral(uint256 collateralSeed, uint256 amountCollateral) public {
+        vm.startPrank(msg.sender);
+        ERC20Mock collateral = _getCollateralFromSeed(collateralSeed);
+        uint256 maxCollateralToRedeem = dsce.getCollateralBalanceOfUser(msg.sender, address(collateral));
+        amountCollateral = bound(amountCollateral, 0, maxCollateralToRedeem);
+        if (amountCollateral == 0) {
+            return;
+        }
+
+        dsce.redeemCollateral(address(collateral), amountCollateral);
         vm.stopPrank();
     }
 
@@ -40,5 +78,11 @@ contract Handler is Test {
             return weth;
         }
         return wbtc;
+    }
+
+    // Always include!!
+    function invariants_gettersShouldNotRevert() public view {
+        dsce.getLiquidationBonus();
+        dsce.getPrecision();
     }
 }

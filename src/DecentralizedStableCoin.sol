@@ -2,35 +2,14 @@
 
 // This is considered an Exogenous, Decentralized, Anchored (pegged), Crypto Collateralized low volitility coin
 
-// Layout of Contract:
-// version
-// imports
-// errors
-// interfaces, libraries, contracts
-// Type declarations
-// State variables
-// Events
-// Modifiers
-// Functions
+pragma solidity 0.8.19;
 
-// Layout of Functions:
-// constructor
-// receive function (if exists)
-// fallback function (if exists)
-// external
-// public
-// internal
-// private
-// view & pure functions
+import {ERC20Burnable, ERC20} from "lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol";
+import {Ownable} from "lib/openzeppelin-contracts/contracts/access/Ownable.sol";
 
-pragma solidity 0.8.18;
-
-import {ERC20Burnable, ERC20} from "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
-import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
-
+// lib/openzeppelin-contracts/contracts/token/ERC20/extensions/ERC20Burnable.sol
 /*
  * @title DecentralizedStableCoin
- * @author Patrick Collins
  * Collateral: Exogenous
  * Minting (Stability Mechanism): Decentralized (Algorithmic)
  * Value (Relative Stability): Anchored (Pegged to USD)
