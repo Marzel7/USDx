@@ -6,13 +6,7 @@ import {DSCEngine} from "../../src/DSCEngine.sol";
 import {DecentralizedStableCoin} from "../../src/DecentralizedStableCoin.sol";
 import {HelperConfig} from "../../script/HelperConfig.s.sol";
 import {ERC20Mock} from "lib/openzeppelin-contracts/contracts/mocks/ERC20Mock.sol";
-// import {MockV3Aggregator} from "../mocks/MockV3Aggregator.sol";
-// import {MockMoreDebtDSC} from "../mocks/MockMoreDebtDSC.sol";
-// import {MockFailedMintDSC} from "../mocks/MockFailedMintDSC.sol";
-// import {MockFailedTransferFrom} from "../mocks/MockFailedTransferFrom.sol";
-// import {MockFailedTransfer} from "../mocks/MockFailedTransfer.sol";
 import {Test, console} from "lib/forge-std/src/Test.sol";
-// import {StdCheats} from "forge-std/StdCheats.sol";
 
 contract DSCEngineTest is Test {
     DeployDSC deployer;
@@ -44,20 +38,7 @@ contract DSCEngineTest is Test {
         if (block.chainid == 31337) {
             vm.deal(user, STARTING_USER_BALANCE);
         }
-        console.log(ethUsdPriceFeed);
-        // Should we put our integration tests here?
-        // else {
-        //     user = vm.addr(deployerKey);
-        //     ERC20Mock mockErc = new ERC20Mock("MOCK", "MOCK", user, 100e18);
-        //     MockV3Aggregator aggregatorMock = new MockV3Aggregator(
-        //         helperConfig.DECIMALS(),
-        //         helperConfig.ETH_USD_PRICE()
-        //     );
-        //     vm.etch(weth, address(mockErc).code);
-        //     vm.etch(wbtc, address(mockErc).code);
-        //     vm.etch(ethUsdPriceFeed, address(aggregatorMock).code);
-        //     vm.etch(btcUsdPriceFeed, address(aggregatorMock).code);
-        // }
+
         ERC20Mock(weth).mint(user, STARTING_USER_BALANCE);
         ERC20Mock(wbtc).mint(user, STARTING_USER_BALANCE);
     }
