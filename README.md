@@ -1,5 +1,8 @@
 ##
 
+![casey50224_ethical_netnographical_data_practices_against_the_ba_0a29e88e-1c55-4502-9058-0ad69fa00cf9](https://github.com/Marzel7/USDx/assets/2925473/773d39c3-65d0-4ada-9768-f72c97c32121)
+
+
 1. Relative Stability: Anchord or Pegged -> $1.00
    1. Chainlink Price Feed
    2. Set a function to exchange Eth -> $$$
