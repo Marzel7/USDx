@@ -21,8 +21,8 @@ Partial liquidation aims to mitigate risk while allowing users to retain a porti
 
 ### USDx v1 (sepolia v1 release)
 
-* Engine: [0xE4cF44F4A219b74902D20dA59DBaFEd3690F1620](https://sepolia.etherscan.io/address/0xe4cf44f4a219b74902d20da59dbafed3690f1620)
-* USDx: [0xF9f2bF9B18b19b2772fD3BCD0198896f248a7E3B](https://sepolia.etherscan.io/address/0xF9f2bF9B18b19b2772fD3BCD0198896f248a7E3B#code)
+* Engine: [0xE4cF44F4A219b74902D20dA59DBaFEd3690F1620] (https://sepolia.etherscan.io/address/0xe4cf44f4a219b74902d20da59dbafed3690f1620)
+* USDx: [0xF9f2bF9B18b19b2772fD3BCD0198896f248a7E3B] (https://sepolia.etherscan.io/address/0xF9f2bF9B18b19b2772fD3BCD0198896f248a7E3B)
 * Oracle: [0x4cd2d6c6Ef31785c2C61240D1E1384Aa2907217c] (https://sepolia.etherscan.io/address/0x4cd2d6c6ef31785c2c61240d1e1384aa2907217c)
 
 ##
